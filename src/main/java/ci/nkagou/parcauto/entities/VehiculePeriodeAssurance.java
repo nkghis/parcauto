@@ -27,8 +27,8 @@ public class VehiculePeriodeAssurance {
     private Periode periode;
 
     @ManyToOne
-    @JoinColumn(name = "idVisite")
-    private Visitetechnique visitetechnique;
+    @JoinColumn(name = "idAssurance")
+    private Assurance assurance;
 
 
 }

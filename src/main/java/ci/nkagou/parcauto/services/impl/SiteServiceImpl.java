@@ -1,14 +1,17 @@
 package ci.nkagou.parcauto.services.impl;
 
 import ci.nkagou.parcauto.entities.Site;
+import ci.nkagou.parcauto.exceptions.ResourceNotFoundException;
 import ci.nkagou.parcauto.repositories.SiteRepository;
 import ci.nkagou.parcauto.services.SiteService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -25,9 +28,14 @@ public class SiteServiceImpl implements SiteService {
     }
 
     @Override
-    public Site getById(Long id) {
-        return siteRepository.getById(id);
+    public Site findById(Long id) {
+
+        return siteRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Site introuvable avec l'identifiant :  " + id)
+        );
     }
+
+
 
     @Override
     public Site findByLibelle(String libelle) {

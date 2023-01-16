@@ -25,4 +25,7 @@ public class Typevehicule {
     @Column(unique=true)
     private String libelle;
 
+    public Typevehicule(String libelle) {
+        this.libelle = libelle;
+    }
 }

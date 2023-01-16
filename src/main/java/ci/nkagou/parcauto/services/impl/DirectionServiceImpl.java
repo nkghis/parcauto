@@ -2,6 +2,7 @@ package ci.nkagou.parcauto.services.impl;
 
 import ci.nkagou.parcauto.entities.Direction;
 import ci.nkagou.parcauto.entities.Site;
+import ci.nkagou.parcauto.exceptions.ResourceNotFoundException;
 import ci.nkagou.parcauto.repositories.DirectionRepository;
 import ci.nkagou.parcauto.services.DirectionService;
 import lombok.AllArgsConstructor;
@@ -26,8 +27,10 @@ public class DirectionServiceImpl implements DirectionService {
     }
 
     @Override
-    public Direction getById(Long id) {
-        return directionRepository.getById(id);
+    public Direction findById(Long id) {
+        return directionRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Direction introuvable avec l'identifiant :  " + id)
+        );
     }
 
     @Override

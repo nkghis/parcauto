@@ -1,6 +1,7 @@
 package ci.nkagou.parcauto.services.impl;
 
 import ci.nkagou.parcauto.entities.Employe;
+import ci.nkagou.parcauto.exceptions.ResourceNotFoundException;
 import ci.nkagou.parcauto.repositories.EmployeRepository;
 import ci.nkagou.parcauto.services.EmployeService;
 import lombok.AllArgsConstructor;
@@ -24,8 +25,10 @@ public class EmployeServiceImpl implements EmployeService {
     }
 
     @Override
-    public Employe getById(Long id) {
-        return employeRepository.getById(id);
+    public Employe findById(Long id) {
+        return employeRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Employé introuvable avec l'identifiant :  " + id)
+        );
     }
 
     @Override
@@ -51,5 +54,12 @@ public class EmployeServiceImpl implements EmployeService {
     @Override
     public void delete(Employe employe) {
         employeRepository.delete(employe);
+    }
+
+    @Override
+    public String getNomComplet(Employe employe) {
+
+        String nomComplet = employe.getPrenom() + " " + employe.getNom();
+        return nomComplet;
     }
 }

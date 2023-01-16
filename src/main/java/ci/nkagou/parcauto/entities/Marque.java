@@ -25,4 +25,8 @@ public class Marque {
 
     @Column(unique=true)
     private String name;
+
+    public Marque(String name) {
+        this.name = name;
+    }
 }

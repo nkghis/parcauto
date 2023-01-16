@@ -39,4 +39,12 @@ public class Vehicule {
     @JoinColumn(name ="idTypeVehicule")
     private Typevehicule typevehicule;
 
+    public Vehicule(String immatriculation, Couleur couleur, LocalDate dateAchat, String carteGrise, Marque marque, Typevehicule typevehicule) {
+        this.immatriculation = immatriculation;
+        this.couleur = couleur;
+        this.dateAchat = dateAchat;
+        this.carteGrise = carteGrise;
+        this.marque = marque;
+        this.typevehicule = typevehicule;
+    }
 }

@@ -22,13 +22,19 @@ public class EmployeDmd {
     private Long idEmployeDmd;
 
 
-    @ManyToOne
-    @JoinColumn(name ="idEmploye")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name ="idEmploye", nullable = false)
     private Employe employe;
 
-    @ManyToOne
-    @JoinColumn(name ="idDmd")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name ="idDmd" , nullable = false)
     private Dmd dmd;
 
     private LocalDateTime dateOperation;
+
+    public EmployeDmd(Employe employe, Dmd dmd, LocalDateTime dateOperation) {
+        this.employe = employe;
+        this.dmd = dmd;
+        this.dateOperation = dateOperation;
+    }
 }

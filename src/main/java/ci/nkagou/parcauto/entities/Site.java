@@ -14,13 +14,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "sites", //
         uniqueConstraints = { //
-                @UniqueConstraint(name = "SITE_UK", columnNames = "libelle") })
+                @UniqueConstraint(name = "SITE_UK", columnNames = "libelle")})
 public class Site {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSite;
 
+    @Column(unique = true)
     private String  libelle;
 
     public Site(String libelle) {

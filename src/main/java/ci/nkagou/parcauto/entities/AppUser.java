@@ -3,6 +3,7 @@ package ci.nkagou.parcauto.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,20 +32,29 @@ public class AppUser {
     @Column(name = "Enabled", length = 1, nullable = false)
     private boolean enabled;
 
-    @OneToMany(mappedBy = "appUser")
+    @OneToMany(mappedBy = "appUser", fetch = FetchType.EAGER)
     private List<UserRole> userRoles;
 
 
-    @ManyToMany
-    @JoinTable(
+
+   /* @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(
                     name = "user_id", referencedColumnName = "user_id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "role_id"))
 
-
-    private List<AppRole> roles;
+    @ManyToMany*/
+   @ManyToMany(cascade = {
+           CascadeType.PERSIST,
+           CascadeType.MERGE
+   }, fetch = FetchType.EAGER)
+   @JoinTable(
+           name = "user_role",
+           joinColumns = @JoinColumn(name = "user_id"),
+           inverseJoinColumns = @JoinColumn(name = "role_id")
+   )
+    private List<AppRole> roles = new ArrayList<>();
 
     @Transient
     private String mesroles;

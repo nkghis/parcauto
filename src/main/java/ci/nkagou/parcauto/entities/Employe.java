@@ -56,5 +56,8 @@ public class Employe {
     @JoinColumn(name = "idDirection")
     private Direction direction;
 
+    public String toNomComplet(){
+        return this.prenom + " " + this.nom;
+    }
 
 }
