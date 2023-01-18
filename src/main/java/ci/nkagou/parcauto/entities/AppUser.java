@@ -32,8 +32,14 @@ public class AppUser {
     @Column(name = "Enabled", length = 1, nullable = false)
     private boolean enabled;
 
+    @ManyToOne
+    @JoinColumn(name = "idEmploye")
+    private Employe employe;
+
     @OneToMany(mappedBy = "appUser", fetch = FetchType.EAGER)
     private List<UserRole> userRoles;
+
+
 
 
 
@@ -65,5 +71,18 @@ public class AppUser {
         this.enabled = enabled;
     }
 
+    public AppUser(Long userId, String userName, String encrytedPassword, boolean enabled, Employe employe) {
+        this.userId = userId;
+        this.userName = userName;
+        this.encrytedPassword = encrytedPassword;
+        this.enabled = enabled;
+        this.employe = employe;
+    }
 
+    public AppUser(String userName, String encrytedPassword, boolean enabled, Employe employe) {
+        this.userName = userName;
+        this.encrytedPassword = encrytedPassword;
+        this.enabled = enabled;
+        this.employe = employe;
+    }
 }
