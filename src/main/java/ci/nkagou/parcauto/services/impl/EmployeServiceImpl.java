@@ -32,6 +32,11 @@ public class EmployeServiceImpl implements EmployeService {
     }
 
     @Override
+    public List<Employe> findEmployesByEstUtilisateur(Boolean estUtilisateur) {
+        return employeRepository.findEmployesByEstUtilisateur(estUtilisateur);
+    }
+
+    @Override
     public Employe findByMatricule(Long matricule) {
         return employeRepository.findByNumMatEmpl(matricule);
     }

@@ -89,6 +89,19 @@
 
             </div>
 
+            <!-- Employé  select -->
+            <div class="form-group row">
+                <label for="employe" class="col-sm-4 form-control-label text-md-right"><strong>Employé</strong></label>
+
+                <div class="col-md-6">
+                    <select  id="employe" name="employe" class="select-type form-control" required  >
+                        <option value="">------- Employé ---------</option>
+                        <option th:each="c:${listEmployes}" th:value="${c.idEmploye}" th:text="${c.toNomComplet()}" th:field="*{employe}"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('employe')}" th:errors="*{employe}"></span>
+                </div>
+            </div>
+
             <div class="form-group row">
                 <label for="btn" class="col-sm-4 col-form-label text-md-right"><strong></strong></label>
 

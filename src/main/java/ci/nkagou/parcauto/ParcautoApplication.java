@@ -26,7 +26,28 @@ public class ParcautoApplication {
 
 	public static void main(String[] args) {
 
-		ApplicationContext ctx = SpringApplication.run(ParcautoApplication.class, args);
+/*		ApplicationContext ctx = SpringApplication.run(ParcautoApplication.class, args);
+
+		RoleRepository roleRepository = ctx.getBean(RoleRepository.class);
+		UserRepository userRepository = ctx.getBean(UserRepository.class);
+
+		AppRole roleuser = roleRepository.findByRoleId(3L);
+		AppRole roleadmin = roleRepository.findByRoleId(1L);
+		AppRole roleaccess = roleRepository.findByRoleId(2L);
+
+		AppUser admin = userRepository.getById(1L);
+		AppUser user = userRepository.getById(2L);
+		AppUser access = userRepository.getById(3L);
+
+
+		System.out.println("===============AFFECTATION ROLE PAR USER=======================");
+		UserRoleRepository userRoleRepository = ctx.getBean(UserRoleRepository.class);
+		userRoleRepository.save(new UserRole(admin,roleadmin));
+		userRoleRepository.save(new UserRole(admin,roleuser));
+		userRoleRepository.save(new UserRole(admin,roleaccess));
+		userRoleRepository.save(new UserRole(access,roleaccess));
+		userRoleRepository.save(new UserRole(user,roleuser));
+		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&FIN DE LA TRANSACTION&&&&&&&&&&&&&&&&&&&");*/
 
 		/*System.out.println("===============DEBUT TRANSACTION=======================");
 

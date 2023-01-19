@@ -19,11 +19,14 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    private final UserDetailsServiceImpl userDetailsService;
 
-    @Autowired
-    private DataSource dataSource;
+    private final DataSource dataSource;
+
+    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, DataSource dataSource) {
+        this.userDetailsService = userDetailsService;
+        this.dataSource = dataSource;
+    }
 
 
    /* private UserDetailsServiceImpl userDetailsService;

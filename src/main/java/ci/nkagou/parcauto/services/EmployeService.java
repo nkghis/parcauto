@@ -8,6 +8,7 @@ public interface EmployeService {
 
     List<Employe> all();
     Employe findById(Long id);
+    List<Employe> findEmployesByEstUtilisateur (Boolean estUtilisateur);
     Employe findByMatricule(Long matricule);
     Employe findByEmail(String email);
     Employe create (Employe employe);

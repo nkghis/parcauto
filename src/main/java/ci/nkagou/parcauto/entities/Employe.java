@@ -48,6 +48,10 @@ public class Employe {
     private boolean estSuperieureHierachique;
     private boolean estChauffeur;
 
+
+    @Column(nullable = true)
+    private boolean estUtilisateur;
+
     @ManyToOne
     @JoinColumn(name = "idSite")
     private Site site;

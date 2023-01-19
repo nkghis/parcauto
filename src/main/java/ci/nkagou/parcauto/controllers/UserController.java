@@ -2,7 +2,9 @@ package ci.nkagou.parcauto.controllers;
 
 import ci.nkagou.parcauto.entities.AppRole;
 import ci.nkagou.parcauto.entities.AppUser;
+import ci.nkagou.parcauto.entities.Employe;
 import ci.nkagou.parcauto.entities.UserRole;
+import ci.nkagou.parcauto.services.EmployeService;
 import ci.nkagou.parcauto.services.RoleService;
 import ci.nkagou.parcauto.services.UserRoleService;
 import ci.nkagou.parcauto.services.UserService;
@@ -28,6 +30,7 @@ public class UserController {
     private UserService userService;
     private RoleService roleService;
     private UserRoleService userRoleService;
+    private EmployeService employeService;
 
     @RequestMapping(value = "/acces/users")
     public String indexUser(Model model, HttpServletRequest request){
@@ -67,6 +70,8 @@ public class UserController {
 
         String r = "ROLE_ADMIN";
 
+        List<Employe> employes = employeService.findEmployesByEstUtilisateur(false);
+
         if (request.isUserInRole(r)) {
             roles = roleService.all();
         }
@@ -78,6 +83,7 @@ public class UserController {
         model.addAttribute("monuser",new AppUser());
         model.addAttribute("title", "Utilisateur - Nouveau");
         model.addAttribute("roles", roles);
+        model.addAttribute("listEmployes", employes);
         return "user/new";
 
     }
