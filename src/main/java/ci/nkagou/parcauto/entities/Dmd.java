@@ -1,9 +1,11 @@
 package ci.nkagou.parcauto.entities;
 
+import ci.nkagou.parcauto.enums.MoyenDemande;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.transaction.Transactional;
@@ -24,21 +26,23 @@ public class Dmd {
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDmd;
 
-    private LocalDate dateRemplissageDmd;
-    //private String motifDmd;
-    private LocalTime heureDepart;
-    private LocalTime heureRetour;
-    private int  kmDepart;
-    private int kmRetour;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate datePrevue;
+
+    private LocalTime heurePrevue;
+
+    @Enumerated(EnumType.ORDINAL)
+    private MoyenDemande moyenDemande;
+
+    private LocalDateTime dateOperation;
 
 
-    private String motif;
 
-    @OneToMany(mappedBy = "employe", fetch = FetchType.EAGER)
+   /*  @OneToMany(mappedBy = "employe", fetch = FetchType.EAGER)
     private List<EmployeDmd> employeDmdList;
 
 
-    @ManyToMany(cascade = {
+   @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     }, fetch = FetchType.EAGER)
@@ -47,26 +51,6 @@ public class Dmd {
             joinColumns = @JoinColumn(name = "idDmd"),
             inverseJoinColumns = @JoinColumn(name = "idEmploye")
     )
-    private List<Employe> employes = new ArrayList<>();
+    private List<Employe> employes = new ArrayList<>();*/
 
-    public Dmd(LocalDate dateRemplissageDmd, LocalTime heureDepart, LocalTime heureRetour, int kmDepart, int kmRetour, String motif, List<Employe> employes) {
-        this.dateRemplissageDmd = dateRemplissageDmd;
-        this.heureDepart = heureDepart;
-        this.heureRetour = heureRetour;
-        this.kmDepart = kmDepart;
-        this.kmRetour = kmRetour;
-        this.motif = motif;
-        this.employes = employes;
-    }
-
-    public Dmd(Long idDmd, LocalDate dateRemplissageDmd, LocalTime heureDepart, LocalTime heureRetour, int kmDepart, int kmRetour, String motif, List<EmployeDmd> employeDmdList) {
-        this.idDmd = idDmd;
-        this.dateRemplissageDmd = dateRemplissageDmd;
-        this.heureDepart = heureDepart;
-        this.heureRetour = heureRetour;
-        this.kmDepart = kmDepart;
-        this.kmRetour = kmRetour;
-        this.motif = motif;
-        this.employeDmdList = employeDmdList;
-    }
 }

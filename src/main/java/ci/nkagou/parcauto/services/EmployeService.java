@@ -13,6 +13,7 @@ public interface EmployeService {
     Employe findByEmail(String email);
     Employe create (Employe employe);
     Employe update (Employe employe);
+    Employe getEmployeByUserName(String username);
     void delete(Employe employe);
 
     String getNomComplet(Employe employe);

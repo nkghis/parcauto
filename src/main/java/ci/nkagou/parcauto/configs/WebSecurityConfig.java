@@ -71,17 +71,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // /user page requires login as ROLE_USER or ROLE_ADMIN.
         // If no login, it will redirect to /login page.
-        //http.authorizeRequests().antMatchers("/admin/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+
         http.authorizeRequests().antMatchers("/user/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"); // Role Utilisateur
         http.authorizeRequests().antMatchers("/dashboard/*").access("hasAnyRole('ROLE_USER', 'ROLE_ACCES', 'ROLE_ADMIN')");
         http.authorizeRequests().antMatchers("/acces/**").access("hasAnyRole('ROLE_ACCES', 'ROLE_ADMIN')"); //Role Parc auto
-        http.authorizeRequests().antMatchers("/vehicule/**").access("hasAnyRole('ROLE_ACCES', 'ROLE_ADMIN')"); //Role Parc auto
-        /*http.authorizeRequests().antMatchers("/auth/**").access("hasAnyRole('ROLE_SUPERVISOR', 'ROLE_ADMIN')");
-        http.authorizeRequests().antMatchers("/agent/**").access("hasAnyRole('ROLE_AGENT', 'ROLE_ADMIN')");
-        http.authorizeRequests().antMatchers("/access/**").access("hasAnyRole('ROLE_ACCES', 'ROLE_ADMIN', 'ROLE_SUPERVISOR')");
-        http.authorizeRequests().antMatchers("/stocks").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_SUPERVISOR', 'ROLE_AGENT')");
-        http.authorizeRequests().antMatchers("/dashboard/*").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_SUPERVISOR', 'ROLE_AGENT')");
-*/
+        http.authorizeRequests().antMatchers("/vehicule/**").access("hasAnyRole('ROLE_PARCAUTO', 'ROLE_ADMIN')"); //Role Parc auto
+        http.authorizeRequests().antMatchers("/visite/**").access("hasAnyRole('ROLE_PARCAUTO', 'ROLE_ADMIN')"); //Role Parc auto
+        http.authorizeRequests().antMatchers("/assurance/**").access("hasAnyRole('ROLE_PARCAUTO', 'ROLE_ADMIN')"); //Role Parc auto
+        http.authorizeRequests().antMatchers("/attribution/**").access("hasAnyRole('ROLE_PARCAUTO', 'ROLE_ADMIN')"); //Role Parc auto
+        http.authorizeRequests().antMatchers("/dmd/**").access("hasAnyRole('ROLE_PARCAUTO', 'ROLE_ADMIN',  'ROLE_USER')"); //Role Parc auto
         // For ADMIN only.
         http.authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')"); //Role Admin
 

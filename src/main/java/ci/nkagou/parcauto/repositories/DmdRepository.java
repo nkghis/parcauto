@@ -11,9 +11,8 @@ import java.util.List;
 public interface DmdRepository extends JpaRepository<Dmd, Long> {
 
     //List<Dmd> findByDateRemplissageDmd(LocalDate dateRemplissage);
-    List<Dmd> findDmdsByDateRemplissageDmd(LocalDate dateRemplissage);
+    //List<Dmd> findDmdsByDateRemplissageDmd(LocalDate dateRemplissage);
    // List<Dmd> findDmdsByMotifDmd(MotifDmd  motifDmd);
-    List<Dmd> findDmdsByHeureDepart(LocalDateTime dateEtHeure);
-    List<Dmd> findDmdsByHeureRetour(LocalDateTime dateEtHeure);
+
     //List<Dmd> findDmdsByEmploye (Employe employe);
 }

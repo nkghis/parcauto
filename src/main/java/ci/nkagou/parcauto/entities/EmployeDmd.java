@@ -1,5 +1,6 @@
 package ci.nkagou.parcauto.entities;
 
+import ci.nkagou.parcauto.enums.Statut;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,11 +31,12 @@ public class EmployeDmd {
     @JoinColumn(name ="idDmd" , nullable = false)
     private Dmd dmd;
 
-    private LocalDateTime dateOperation;
+    private String Destination;
 
-    public EmployeDmd(Employe employe, Dmd dmd, LocalDateTime dateOperation) {
-        this.employe = employe;
-        this.dmd = dmd;
-        this.dateOperation = dateOperation;
-    }
+    private String motifDmd;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Statut statut;
+
+
 }

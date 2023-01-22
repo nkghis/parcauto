@@ -1,8 +1,10 @@
 package ci.nkagou.parcauto.services.impl;
 
+import ci.nkagou.parcauto.entities.AppUser;
 import ci.nkagou.parcauto.entities.Employe;
 import ci.nkagou.parcauto.exceptions.ResourceNotFoundException;
 import ci.nkagou.parcauto.repositories.EmployeRepository;
+import ci.nkagou.parcauto.repositories.UserRepository;
 import ci.nkagou.parcauto.services.EmployeService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,7 @@ import java.util.List;
 public class EmployeServiceImpl implements EmployeService {
 
     private EmployeRepository employeRepository;
+    private UserRepository userRepository;
 
     @Override
     public List<Employe> all() {
@@ -54,6 +57,12 @@ public class EmployeServiceImpl implements EmployeService {
     @Override
     public Employe update(Employe employe) {
         return employeRepository.save(employe);
+    }
+
+    @Override
+    public Employe getEmployeByUserName(String username) {
+        AppUser user = userRepository.findByUserName(username);
+        return user.getEmploye();
     }
 
     @Override

@@ -26,9 +26,9 @@ public class ParcautoApplication {
 
 	public static void main(String[] args) {
 
-/*		ApplicationContext ctx = SpringApplication.run(ParcautoApplication.class, args);
+		ApplicationContext ctx = SpringApplication.run(ParcautoApplication.class, args);
 
-		RoleRepository roleRepository = ctx.getBean(RoleRepository.class);
+		/*RoleRepository roleRepository = ctx.getBean(RoleRepository.class);
 		UserRepository userRepository = ctx.getBean(UserRepository.class);
 
 		AppRole roleuser = roleRepository.findByRoleId(3L);
